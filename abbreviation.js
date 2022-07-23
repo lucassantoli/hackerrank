@@ -35,6 +35,7 @@ var solved = false;
 var set = new Set();
 
 function abbreviation(a, b) {
+    // Improving performance by stopping recursion when a solution is found
     if (solved) return true;
     
     // Base case when A is empty
@@ -61,6 +62,7 @@ function abbreviation(a, b) {
         }
     }
     
+    // Improving performance by checking if the case was tested before
     if (set.has(JSON.stringify({a,b}))) return false;
     set.add(JSON.stringify({a,b}));
     
