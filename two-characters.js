@@ -30,6 +30,7 @@ function readLine() {
  */
 
 function alternate(s) {
+    // Function to check if two arrays have sorted alternating elements
     function doInterleave (arrA, arrB) {
         var interleaved = [
             ...arrA.map(el => ({arr: 1, val: el})),
@@ -45,6 +46,7 @@ function alternate(s) {
     }
     
     let letters = {};
+    // For each letter in the string, create a property that contains its indexes
     for (let i = 0; i < s.length; i++) {
         let char = s.charAt(i);
         if (letters[char]) {
@@ -56,13 +58,16 @@ function alternate(s) {
     
     let minChanges = 0;
     
+    // Get all the letters of the string
     let keyLetters = Object.keys(letters);
     for (let i = 0; i < keyLetters.length; i++) {
         for (let j = i+1; j < keyLetters.length; j++) {
             let letter1 = keyLetters[i];
             let letter2 = keyLetters[j];
+            // Test every pair to check if they alternates
             if (doInterleave(letters[letter1], letters[letter2])) {
                 let resultantLength = letters[letter1].length + letters[letter2].length;
+                // Update minChanges if the new result string more elements than the previous one
                 minChanges = Math.max(minChanges, resultantLength);
             }
         }
